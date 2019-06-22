@@ -9,20 +9,14 @@ template <typename T>
 class list {
 private:
     struct node_base {
-        node_base* next_;
-        node_base* prev_;
-        node_base() : next_(nullptr), prev_(nullptr) {}
-        node_base(node_base* p, node_base* n) : next_(n), prev_(p) {}
+        node_base* next_, *prev_;
+        node_base(node_base* p = nullptr, node_base* n = nullptr) : next_(n), prev_(p) {}
         virtual ~node_base() = default;
     };
 
     struct node : node_base {
         T value;
-
-        node() = delete;
-        node(T v) : node_base(), value(v) {}
-        node(T v, node_base* p) : node_base(p), value(v) {}
-        node(T v, node_base* p, node_base* n) : node_base(p, n), value(v) {}
+        node(T v, node_base* p = nullptr, node_base* n= nullptr) : node_base(p, n), value(v) {}
     };
 
     node_base fake_;

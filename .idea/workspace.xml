@@ -2,10 +2,10 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="list" targetName="std" />
       <config projectName="list" targetName="list" />
       <config projectName="list" targetName="counted" />
       <config projectName="list" targetName="gtest" />
+      <config projectName="list" targetName="std" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,7 +14,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e45c6faf-cadf-4f38-807b-89ac413ae0b1" name="Default Changelist" comment="" />
+    <list default="true" id="e45c6faf-cadf-4f38-807b-89ac413ae0b1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +26,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
@@ -49,7 +51,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
+            <state relative-caret-position="405">
               <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -61,14 +63,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/list.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="177" column="43" selection-start-line="177" selection-start-column="43" selection-end-line="177" selection-end-column="43" />
+            <state relative-caret-position="474">
+              <caret line="216" selection-start-line="216" selection-end-line="216" />
               <folding>
                 <element signature="e#41#60#0" expanded="true" />
-                <element signature="e#89#101#0" expanded="true" />
-                <element signature="e#1651#1663#0" expanded="true" />
-                <element signature="e#2299#2311#0" expanded="true" />
-                <element signature="e#2443#2455#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,7 +75,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fault_injection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
+            <state relative-caret-position="1785">
               <caret line="119" selection-start-line="119" selection-end-line="119" />
             </state>
           </provider>
@@ -86,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/counted.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
+            <state relative-caret-position="1050">
               <caret line="70" selection-start-line="70" selection-end-line="70" />
             </state>
           </provider>
@@ -95,7 +93,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests.inl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="4980">
               <caret line="332" column="27" selection-start-line="332" selection-start-column="27" selection-end-line="332" selection-end-column="27" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -146,6 +144,9 @@
       <replace>bt</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -163,12 +164,12 @@
     <option name="width" value="1279" />
     <option name="height" value="701" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,6 +181,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -239,7 +241,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561187357661</updated>
-      <workItem from="1561187385589" duration="36544000" />
+      <workItem from="1561187385589" duration="37181000" />
+      <workItem from="1561229185278" duration="91000" />
     </task>
     <servers />
   </component>
@@ -276,32 +279,31 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36544000" />
+    <option name="totallyTimeSpent" value="37272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980047" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25379092" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="CMake" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Messages" weight="0.32954547" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40746754" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4087948" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.42045453" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32954547" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="CMake" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,13 +359,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gtest/gtest.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -371,10 +366,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fault_injection.cpp">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -388,16 +383,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/counted.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
+        <state relative-caret-position="405">
           <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -405,9 +393,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fault_injection.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/counted.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests.inl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="4980">
           <caret line="332" column="27" selection-start-line="332" selection-start-column="27" selection-end-line="332" selection-end-column="27" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
@@ -418,14 +420,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/list.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="177" column="43" selection-start-line="177" selection-start-column="43" selection-end-line="177" selection-end-column="43" />
+        <state relative-caret-position="474">
+          <caret line="216" selection-start-line="216" selection-end-line="216" />
           <folding>
             <element signature="e#41#60#0" expanded="true" />
-            <element signature="e#89#101#0" expanded="true" />
-            <element signature="e#1651#1663#0" expanded="true" />
-            <element signature="e#2299#2311#0" expanded="true" />
-            <element signature="e#2443#2455#0" expanded="true" />
           </folding>
         </state>
       </provider>
