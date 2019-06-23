@@ -331,6 +331,7 @@ TEST(correctness, iterator_conversions)
     EXPECT_FALSE(i1 != i2);
     EXPECT_FALSE(i2 != i1);
     EXPECT_FALSE(i2 != i2);
+
 }
 
 TEST(correctness, iterators_postfix)
@@ -497,7 +498,6 @@ TEST(correctness, erase_iterators)
 /*TEST(correctness, erase_end_whole)
 {
     counted::no_new_instances_guard g;
-
     container c;
     mass_push_back(c, {1, 2, 3, 4});
     c.erase(c.begin(), c.end());
@@ -520,7 +520,6 @@ TEST(correctness, erase_return_value)
 /*TEST(correctness, erase_range_return_value)
 {
     counted::no_new_instances_guard g;
-
     container c;
     mass_push_back(c, {1, 2, 3, 4, 5});
     container::iterator i = c.erase(std::next(as_const(c).begin()), std::next(as_const(c).begin(), 3));
@@ -532,7 +531,6 @@ TEST(correctness, erase_return_value)
 /*TEST(correctness, erase_upto_end_return_value)
 {
     counted::no_new_instances_guard g;
-
     container c;
     mass_push_back(c, {1, 2, 3, 4, 5});
     container::iterator i = c.erase(std::next(as_const(c).begin(), 2), as_const(c).end());
@@ -862,11 +860,11 @@ TEST(correctness, clear_empty)
     c.clear();
     EXPECT_TRUE(c.empty());
 }
-    
+
 TEST(correctness, clear)
 {
     counted::no_new_instances_guard g;
-    
+
     container c;
     mass_push_back(c, {1, 2, 3, 4});
     c.clear();
@@ -878,19 +876,28 @@ TEST(correctness, clear)
 
 TEST(fault_injection, push_back)
 {
+    counted::no_new_instances_guard g;
     faulty_run([] {
-        counted::no_new_instances_guard g;
-    
         container c;
         mass_push_back(c, {1, 2, 3, 4});
     });
 }
 
+TEST(fault_injection, copy_ctor)
+{
+    counted::no_new_instances_guard g;
+    faulty_run([] {
+        container c;
+        mass_push_back(c, {1, 2, 3, 4});
+        container c2 = c;
+        expect_eq(c2, {1, 2, 3, 4});
+    });
+}
+
 TEST(fault_injection, assignment_operator)
 {
+    counted::no_new_instances_guard g;
     faulty_run([] {
-        counted::no_new_instances_guard g;
-    
         container c;
         mass_push_back(c, {1, 2, 3, 4});
         container c2;
@@ -906,7 +913,6 @@ TEST(fault_injection, assignment_operator)
         c.pop_front();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, pop_back_empty) {
     EXPECT_EXIT(
     {
@@ -914,7 +920,6 @@ TEST(invalid, pop_back_empty) {
         c.pop_back();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, front_empty) {
     EXPECT_EXIT(
     {
@@ -922,7 +927,6 @@ TEST(invalid, front_empty) {
         c.front();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, back_empty) {
     EXPECT_EXIT(
     {
@@ -930,7 +934,6 @@ TEST(invalid, back_empty) {
         c.back();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, const_front_empty) {
     EXPECT_EXIT(
     {
@@ -938,7 +941,6 @@ TEST(invalid, const_front_empty) {
         as_const(c).front();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, const_back_empty) {
     EXPECT_EXIT(
     {
@@ -946,7 +948,6 @@ TEST(invalid, const_back_empty) {
         as_const(c).back();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, insert_other_list) {
     EXPECT_EXIT(
     {
@@ -957,7 +958,6 @@ TEST(invalid, insert_other_list) {
         c1.insert(c2.end(), 9);
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, insert_other_empty_list) {
     EXPECT_EXIT(
     {
@@ -967,7 +967,6 @@ TEST(invalid, insert_other_empty_list) {
         c1.insert(c2.end(), 9);
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, erase_other_list) {
     EXPECT_EXIT(
     {
@@ -978,7 +977,6 @@ TEST(invalid, erase_other_list) {
         c1.erase(std::next(c2.begin(), 2));
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, erase_range_other_list_1) {
     EXPECT_EXIT(
     {
@@ -989,7 +987,6 @@ TEST(invalid, erase_range_other_list_1) {
         c1.erase(std::next(c2.begin(), 2), c2.end());
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, erase_range_other_list_2) {
     EXPECT_EXIT(
     {
@@ -1000,7 +997,6 @@ TEST(invalid, erase_range_other_list_2) {
         c1.erase(c1.begin(), std::next(c2.begin(), 2));
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, splice_wrong_pos) {
     EXPECT_EXIT(
     {
@@ -1011,7 +1007,6 @@ TEST(invalid, splice_wrong_pos) {
         c1.splice(std::next(c2.begin(), 2), c2, c2.begin(), c2.end());
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, splice_wrong_first) {
     EXPECT_EXIT(
     {
@@ -1022,7 +1017,6 @@ TEST(invalid, splice_wrong_first) {
         c1.splice(std::next(c1.begin(), 2), c2, std::next(c1.begin(), 3), c2.end());
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, splice_wrong_last) {
     EXPECT_EXIT(
     {
@@ -1033,7 +1027,6 @@ TEST(invalid, splice_wrong_last) {
         c1.splice(std::next(c1.begin(), 2), c2, c2.begin(), std::next(c1.begin(), 3));
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_default_iterator) {
     EXPECT_EXIT(
     {
@@ -1041,7 +1034,6 @@ TEST(invalid, deref_default_iterator) {
         *i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_default_const_iterator) {
     EXPECT_EXIT(
     {
@@ -1049,7 +1041,6 @@ TEST(invalid, deref_default_const_iterator) {
         *i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, preinc_default_iterator) {
     EXPECT_EXIT(
     {
@@ -1057,7 +1048,6 @@ TEST(invalid, preinc_default_iterator) {
         ++i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, preinc_default_const_iterator) {
     EXPECT_EXIT(
     {
@@ -1065,7 +1055,6 @@ TEST(invalid, preinc_default_const_iterator) {
         ++i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, postinc_default_iterator) {
     EXPECT_EXIT(
     {
@@ -1073,7 +1062,6 @@ TEST(invalid, postinc_default_iterator) {
         i++;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, postinc_default_const_iterator) {
     EXPECT_EXIT(
     {
@@ -1081,7 +1069,6 @@ TEST(invalid, postinc_default_const_iterator) {
         i++;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, predec_default_iterator) {
     EXPECT_EXIT(
     {
@@ -1089,7 +1076,6 @@ TEST(invalid, predec_default_iterator) {
         --i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, predec_default_const_iterator) {
     EXPECT_EXIT(
     {
@@ -1097,7 +1083,6 @@ TEST(invalid, predec_default_const_iterator) {
         --i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, postdec_default_iterator) {
     EXPECT_EXIT(
     {
@@ -1105,7 +1090,6 @@ TEST(invalid, postdec_default_iterator) {
         i--;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, postdec_default_const_iterator) {
     EXPECT_EXIT(
     {
@@ -1113,7 +1097,6 @@ TEST(invalid, postdec_default_const_iterator) {
         i--;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_end) {
     EXPECT_EXIT(
     {
@@ -1122,7 +1105,6 @@ TEST(invalid, deref_end) {
         *c.end();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_const_end) {
     EXPECT_EXIT(
     {
@@ -1131,7 +1113,6 @@ TEST(invalid, deref_const_end) {
         *as_const(c).end();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, inc_end) {
     EXPECT_EXIT(
     {
@@ -1141,7 +1122,6 @@ TEST(invalid, inc_end) {
         ++i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, inc_const_end) {
     EXPECT_EXIT(
     {
@@ -1151,7 +1131,6 @@ TEST(invalid, inc_const_end) {
         ++i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, dec_begin) {
     EXPECT_EXIT(
     {
@@ -1161,7 +1140,6 @@ TEST(invalid, dec_begin) {
         --i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, dec_const_begin) {
     EXPECT_EXIT(
     {
@@ -1171,7 +1149,6 @@ TEST(invalid, dec_const_begin) {
         --i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_erased) {
     EXPECT_EXIT(
     {
@@ -1187,7 +1164,6 @@ TEST(invalid, deref_erased) {
         *j;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, inc_erased) {
     EXPECT_EXIT(
     {
@@ -1203,7 +1179,6 @@ TEST(invalid, inc_erased) {
         ++j;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, dec_erased) {
     EXPECT_EXIT(
     {
@@ -1219,7 +1194,6 @@ TEST(invalid, dec_erased) {
         --j;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_destroyed)
 {
     EXPECT_EXIT(
@@ -1233,7 +1207,6 @@ TEST(invalid, deref_destroyed)
         *i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_destroyed_empty)
 {
     EXPECT_EXIT(
@@ -1246,7 +1219,6 @@ TEST(invalid, deref_destroyed_empty)
         *i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, eq_default)
 {
     EXPECT_EXIT(
@@ -1256,7 +1228,6 @@ TEST(invalid, eq_default)
         i == c.begin();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, neq_default)
 {
     EXPECT_EXIT(
@@ -1266,7 +1237,6 @@ TEST(invalid, neq_default)
         i == c.begin();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, eq_destroyed)
 {
     EXPECT_EXIT(
@@ -1280,37 +1250,30 @@ TEST(invalid, eq_destroyed)
         i == d.begin();
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_after_assignment)
 {
     EXPECT_EXIT(
     {
         container c;
         mass_push_back(c, {1, 2, 3, 4});
-
         container c2;
         mass_push_back(c, {5, 6, 7, 8});
-
         container::const_iterator i = std::next(c.begin(), 2);
         c = c2;
         *i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, deref_after_self_assignment)
 {
     EXPECT_EXIT(
     {
         container c;
         mass_push_back(c, {1, 2, 3, 4});
-
         container::const_iterator i = std::next(c.begin(), 2);
         c = c;
         *i;
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
-
 TEST(invalid, splice_inside_range)
 {
     EXPECT_EXIT(
@@ -1321,7 +1284,6 @@ TEST(invalid, splice_inside_range)
         c1.splice(std::next(c1.begin(), 2), c1, std::next(c1.begin()), std::prev(c1.end()));
     }, ::testing::KilledBySignal(SIGABRT), "");
 }
-
 TEST(invalid, splice_reversed_range)
 {
     EXPECT_EXIT(

@@ -2,8 +2,6 @@
 #define LIST_LIST_H
 
 #include <iterator>
-#include <vector>
-#include <cassert>
 
 template <typename T>
 class list {
@@ -22,7 +20,9 @@ private:
     node_base fake_;
 
 public:
-    list() noexcept { fake_.next_ = fake_.prev_ = &fake_; }
+    list() noexcept {
+        fake_.next_ = fake_.prev_ = &fake_;
+    }
 
     list(list const& other) : list() {
         const_iterator cur = other.begin();
@@ -45,9 +45,9 @@ public:
 private:
     template <typename U>
     struct bdr_list_iterator
-            : public std::iterator<std::bidirectional_iterator_tag, U> {
+            : std::iterator<std::bidirectional_iterator_tag, U> {
     public:
-        friend class list<T>;
+        friend struct list<T>;
         bdr_list_iterator() = default;
         bdr_list_iterator(bdr_list_iterator<T> const& other) : ptr(other.ptr) {}
         bdr_list_iterator& operator++() {

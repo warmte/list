@@ -145,10 +145,6 @@ stdexcept
 /home/ilona/CLionProjects/list/list.h
 iterator
 -
-vector
--
-cassert
--
 
 /home/ilona/CLionProjects/list/std.cpp
 counted.h
