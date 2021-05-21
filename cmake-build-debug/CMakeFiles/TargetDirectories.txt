@@ -1,8 +1,0 @@
-/home/ilona/CLionProjects/list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/ilona/CLionProjects/list/cmake-build-debug/CMakeFiles/std.dir
-/home/ilona/CLionProjects/list/cmake-build-debug/CMakeFiles/list.dir
-/home/ilona/CLionProjects/list/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/ilona/CLionProjects/list/cmake-build-debug/CMakeFiles/counted.dir
-/home/ilona/CLionProjects/list/cmake-build-debug/gtest/CMakeFiles/rebuild_cache.dir
-/home/ilona/CLionProjects/list/cmake-build-debug/gtest/CMakeFiles/gtest.dir
-/home/ilona/CLionProjects/list/cmake-build-debug/gtest/CMakeFiles/edit_cache.dir
